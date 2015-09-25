@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+       public static void main(String[] args) 
+{
+    
+ Scanner sc = new Scanner(System.in);
+int d,o,r,min,i,j,t = sc.nextInt();
+int a[] ,b[];
+String s1,s2;
+int count1 ,count2,flag;
+for(i=0;i<t;i++)
+{
+    a= new int[26];
+    b = new int[26];
+    count1 = 0;
+    count2  =0;
+    sc.nextLine();
+    s1 = sc.nextLine();
+    s2 = sc.nextLine();
+    int l1 = s1.length();
+    int l2 = s2.length();
+    //System.out.println(l1 +" " + l2);
+    for(j=0;j<l1;j++)
+        {
+        int p =(int)s1.charAt(j);
+        a[ p- 97]++;
+      //  System.out.println(p);
+
+    }
+        for(j=0;j<l2;j++)
+        {
+        b[(int)s2.charAt(j) - 97]++;
+    }   
+     //   sc.nextLine();
+   d = sc.nextInt();
+   o = sc.nextInt();
+   r = sc.nextInt();
+   if(d+o > r)
+       min = r;
+   else min = d+o;
+   //System.out.println(min);
+  for(j=0;j<26;j++)
+  {
+    //  System.out.println(a[j] + "  " + b[j]);
+      if(a[j] > b[j])
+          count1 += a[j] - b[j];
+      else{ if(a[j] < b[j])
+          count2 += b[j] - a[j];}
+  }
+  //System.out.println(count1 +" " + count2);
+  flag = count1 - count2;
+  if(flag==0)
+  {
+      System.out.println(count1*min);
+  }
+  else 
+  {
+      if(flag>0)
+          System.out.println(count2*min + flag*d);
+      else if(flag<0)System.out.println(count1*min - flag*o);
+  }
+}
+       }
+}
